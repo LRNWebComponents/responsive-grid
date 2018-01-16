@@ -14,7 +14,7 @@
 
     <style is="custom-style" include="demo-pages-shared-styles">
         responsive-grid {
-          --responsive-grid-padding: 10px;
+          /* TODO: Fix --responsive-grid-padding: 10px; */
         }
         .vertical-section-container.centered {
           max-width: 1024px;
@@ -44,6 +44,7 @@
                   Responsive column print-only
                 </div>
               </responsive-grid-col>
+              <responsive-grid-clear clear-sm></responsive-grid-clear>
               <responsive-grid-col lg-width="3" md-width="4" sm-width="6" xs-width="12" screen-only>
                 <div style="border: 1px solid #ddd; padding: 20px;">
                   Responsive column screen-only
@@ -59,6 +60,7 @@
                     Visible on an small screen.
                 </div>
               </responsive-grid-col>
+              <responsive-grid-clear clear-md></responsive-grid-clear>
               <responsive-grid-col lg-width="0" md-width="4" sm-width="0" xs-width="0">
                 <div style="border: 1px solid #ddd; padding: 20px;">
                     Visible on an medium screen.
