@@ -13,6 +13,10 @@
     <link rel="import" href="../responsive-grid.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+        .vertical-section-container.centered {
+          max-width: 1024px;
+        }
+
     </style>
   </head>
   <body>
@@ -20,7 +24,50 @@
       <h3>Basic responsive-grid demo</h3>
       <demo-snippet>
         <template>
-          <responsive-grid></responsive-grid>
+          <responsive-grid>
+            <responsive-grid-row>
+              <responsive-grid-col lg-width="6" md-width="4" sm-width="6" xs-width="12">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                  Responsive column (50% wide on large screens)
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="0" md-width="4" sm-width="6" xs-width="12">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                  Responsive column hidden on large screens
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="3" md-width="4" sm-width="6" xs-width="12" print-only>
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                  Responsive column print-only
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="3" md-width="4" sm-width="6" xs-width="12" screen-only>
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                  Responsive column screen-only
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="0" md-width="0" sm-width="0" xs-width="12">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                    Visible on an extra-small screen.
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="0" md-width="0" sm-width="6" xs-width="0">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                    Visible on an small screen.
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="0" md-width="4" sm-width="0" xs-width="0">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                    Visible on an medium screen.
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col lg-width="3" md-width="0" sm-width="0" xs-width="0">
+                <div style="border: 1px solid #ddd; padding: 20px;">
+                    Visible on an large screen.
+                </div>
+              </responsive-grid-col>
+            </responsive-grid-row>
+          </responsive-grid>
         </template>
       </demo-snippet>
     </div>

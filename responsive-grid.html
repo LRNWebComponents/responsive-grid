@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="responsive-grid-row.html">
+<link rel="import" href="responsive-grid-col.html">
 
 <!--
 `responsive-grid`
@@ -7,9 +9,15 @@ A LRN element
 @demo demo/index.html
 
 @microcopy - the mental model for this element
- -
- -
- -
+ Example:
+  <responsive-grid>
+    <responsive-grid-row>
+      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
+      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
+      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
+      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
+    </responsive-grid-row>
+  </responsive-grid>
 
 -->
 
@@ -18,9 +26,25 @@ A LRN element
     <style>
       :host {
         display: block;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host:before,
+      :host:after {
+        content: " ";
+        display: table;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host:after {
+        clear: both;
       }
     </style>
-    <h2>[[title]]</h2>
+    <slot></slot>
   </template>
 
   <script>
@@ -29,10 +53,6 @@ A LRN element
       is: 'responsive-grid',
 
       properties: {
-        title: {
-          type: String,
-          value: 'responsive-grid',
-        },
       },
 
     });
