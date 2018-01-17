@@ -10,9 +10,9 @@ A column for the responsive grid
   Example: 
   <responsive-grid-col 
     xs-width="1"    //the number of columns on an extra-small-width screen
-    sm-width="2"    //the number of columns on a small-width screen
-    md-width="3"    //the number of columns on a medium-width screen
-    lg-width="4">   //the number of columns on a large-width screen
+    md-width="2"    //the number of columns on a small-width screen
+    lg-width="3"    //the number of columns on a medium-width screen
+    xl-width="4">   //the number of columns on a large-width screen
     CONTENT HERE
   </responsive-grid-col>
 
@@ -69,7 +69,8 @@ A column for the responsive grid
       :host[xs-width="0"] {
         display: none;
       }
-      @media (min-width: 768px) {
+      /* Small (sm) Screen */
+      @media (min-width: 600px) {
         :host[xs-width="0"] {
           display: block;
         }
@@ -113,8 +114,9 @@ A column for the responsive grid
           display: none;
         }
       }
-      @media (min-width: 992px) {
-        :host[sm-width="0"] {
+      /* Medium (md) Screen */
+      @media (min-width: 900px) {
+        :host[xs-width="0"] {
           display: block;
         }
         :host[md-width="12"] {
@@ -157,6 +159,7 @@ A column for the responsive grid
           display: none;
         }
       }
+      /* Large (lg) Screen */
       @media (min-width: 1200px) {
         :host[md-width="0"] {
           display: block;
@@ -201,11 +204,58 @@ A column for the responsive grid
           display: none;
         }
       }
+      /* Extra Large (xl) Screen */
+      @media (min-width: 1800px) {
+        :host[lg-width="0"] {
+          display: block;
+        }
+        :host[xl-width="12"] {
+          width: 100%;
+        }
+        :host[xl-width="11"] {
+          width: 91.66666667%;
+        }
+        :host[xl-width="10"] {
+          width: 83.33333333%;
+        }
+        :host[xl-width="9"] {
+          width: 75%;
+        }
+        :host[xl-width="8"] {
+          width: 66.66666667%;
+        }
+        :host[xl-width="7"] {
+          width: 58.33333333%;
+        }
+        :host[xl-width="6"] {
+          width: 50%;
+        }
+        :host[xl-width="5"] {
+          width: 41.66666667%;
+        }
+        :host[xl-width="4"] {
+          width: 33.33333333%;
+        }
+        :host[xl-width="3"] {
+          width: 25%;
+        }
+        :host[xl-width="2"] {
+          width: 16.66666667%;
+        }
+        :host[xl-width="1"] {
+          width: 8.33333333%;
+        }
+        :host[xl-width="0"] {
+          display: none;
+        }
+      }
+      /* Hide Print-Only on Screen */
       @media screen {
         :host[print-only] {
           display: none;
         }
       }
+      /* Hide Screen-Only on Print */
       @media print {
         :host[screen-only] {
           display: none;
@@ -221,6 +271,13 @@ A column for the responsive grid
       is: 'responsive-grid-col',
 
       properties: {
+        /** 
+         * the width when viewed on an extra large screen
+         */
+        xlWidth: {
+          type: Number,
+          value: 1,
+        },
         /** 
          * the width when viewed on a large screen
          */

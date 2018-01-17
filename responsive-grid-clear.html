@@ -26,7 +26,10 @@ A clearumn for the responsive grid
       :host[clear-xs] {
         display: block;
       }
-      @media (min-width: 768px) {
+      /* Breakpoints selected based on: 
+       * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 */
+       
+      @media (min-width: 600px) {
         :host[clear-xs] {
           display: none;
         }
@@ -34,7 +37,7 @@ A clearumn for the responsive grid
           display: block;
         }
       }
-      @media (min-width: 992px) {
+      @media (min-width: 900px) {
         :host[clear-sm] {
           display: none;
         }
@@ -47,6 +50,14 @@ A clearumn for the responsive grid
           display: none;
         }
         :host[clear-lg] {
+          display: block;
+        }
+      }
+      @media (min-width: 1800px) {
+        :host[clear-lg] {
+          display: none;
+        }
+        :host[clear-xl] {
           display: block;
         }
       }

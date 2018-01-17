@@ -13,62 +13,157 @@
     <link rel="import" href="../responsive-grid.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
-        responsive-grid {
-          /* TODO: Fix --responsive-grid-padding: 10px; */
-        }
         .vertical-section-container.centered {
           max-width: 1024px;
         }
-
+        .demo1 responsive-grid-col {
+          outline: 1px solid white;
+          color: white;
+          background-color: #666;
+        }
+        .demo1 .column-demo {
+          padding: 20px; 
+        }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic responsive-grid demo</h3>
+      <h4>Simple Responsive Grid</h4>
       <demo-snippet>
         <template>
-          <responsive-grid>
+          <responsive-grid class="demo1">
             <responsive-grid-row>
-              <responsive-grid-col lg-width="6" md-width="4" sm-width="6" xs-width="12">
-                <div style="border: 1px solid #ddd; padding: 20px;">
-                  Responsive column (50% wide on large screens)
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
                 </div>
               </responsive-grid-col>
-              <responsive-grid-col lg-width="0" md-width="4" sm-width="6" xs-width="12">
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+            </responsive-grid-row>
+          </responsive-grid>
+        </template>
+      </demo-snippet>
+      <h4>Responsive grid with inner-padding</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid class="demo2">
+            <responsive-grid-row>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column
+                </div>
+              </responsive-grid-col>
+            </responsive-grid-row>
+          </responsive-grid>
+          <style>
+            .demo2 .column-demo {
+              margin-bottom: 30px;
+              padding: 20px; 
+              border: 1px solid black;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+      <h4>Responsive grid with hidden columns and clear floats</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid class="demo1">
+            <responsive-grid-row>
+              <responsive-grid-col xl-width="6" lg-width="6" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
+                  Responsive column (50% wide on large and extra-large screens)
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="0" md-width="4" sm-width="6" xs-width="12">
+                <div class="column-demo">
                   Responsive column hidden on large screens
                 </div>
               </responsive-grid-col>
-              <responsive-grid-col lg-width="3" md-width="4" sm-width="6" xs-width="12" print-only>
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12" print-only>
+                <div class="column-demo">
                   Responsive column print-only
                 </div>
               </responsive-grid-col>
               <responsive-grid-clear clear-sm></responsive-grid-clear>
-              <responsive-grid-col lg-width="3" md-width="4" sm-width="6" xs-width="12" screen-only>
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="2" lg-width="3" md-width="4" sm-width="6" xs-width="12" screen-only>
+                <div class="column-demo">
                   Responsive column screen-only
                 </div>
               </responsive-grid-col>
-              <responsive-grid-col lg-width="0" md-width="0" sm-width="0" xs-width="12">
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="0" lg-width="0" md-width="0" sm-width="0" xs-width="12">
+                <div class="column-demo">
                     Visible on an extra-small screen.
                 </div>
               </responsive-grid-col>
-              <responsive-grid-col lg-width="0" md-width="0" sm-width="6" xs-width="0">
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="0" lg-width="0" md-width="0" sm-width="6" xs-width="0">
+                <div class="column-demo">
                     Visible on an small screen.
                 </div>
               </responsive-grid-col>
               <responsive-grid-clear clear-md></responsive-grid-clear>
-              <responsive-grid-col lg-width="0" md-width="4" sm-width="0" xs-width="0">
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="0" lg-width="0" md-width="4" sm-width="0" xs-width="0">
+                <div class="column-demo">
                     Visible on an medium screen.
                 </div>
               </responsive-grid-col>
-              <responsive-grid-col lg-width="3" md-width="0" sm-width="0" xs-width="0">
-                <div style="border: 1px solid #ddd; padding: 20px;">
+              <responsive-grid-col xl-width="0" lg-width="3" md-width="0" sm-width="0" xs-width="0">
+                <div class="column-demo">
                     Visible on an large screen.
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl-width="2" lg-width="0" md-width="0" sm-width="0" xs-width="0">
+                <div class="column-demo">
+                    Visible on an extra large screen.
                 </div>
               </responsive-grid-col>
             </responsive-grid-row>
