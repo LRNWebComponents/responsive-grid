@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../juicy-html/juicy-html.html">
 <link rel="import" href="responsive-grid-row.html">
 <link rel="import" href="responsive-grid-col.html">
 <link rel="import" href="responsive-grid-clear.html">
@@ -44,8 +45,25 @@ A LRN element
       :host:after {
         clear: both;
       }
-    </style>
-    <slot></slot>
+      /* Hide Print-Only on Screen */
+      @media screen {
+        ::slotted(responsive-grid-row[print-only]),
+        ::slotted(* > responsive-grid-col[print-only]) {
+          display: none;
+        }
+      }
+      /* Hide Screen-Only on Print */
+      @media print {
+        ::slotted(* > responsive-grid-col[screen-only]) {
+          display: none;
+        }
+      }
+      </style>
+      <!--juicy-html model="{{model}}" html="<h1>body { font-size: [[model.sm]]px !important; }</h1>"></juicy-html-->
+      <template is="dom-bind">
+        <juicy-html model="{{model}}" href="breakpoints.html"></juicy-html>
+      </template>
+      <slot></slot>
   </template>
 
   <script>
@@ -54,8 +72,54 @@ A LRN element
       is: 'responsive-grid',
 
       properties: {
+        /**
+         * Set small breakpoint
+         */
+         sm: {
+          type: Number,
+          value: 600,
+        },
+        /**
+         * Set medium breakpoint
+         */
+         md: {
+          type: Number,
+          value: 900,
+        },
+        /**
+         * Set small breakpoint
+         */
+         lg: {
+          type: Number,
+          value: 1200,
+        },
+        /**
+         * Set medium breakpoint
+         */
+         xl: {
+          type: Number,
+          value: 1800,
+        },
+        /**
+         * Collection of breakpoints, 
+         * where defaults are based on: 
+         * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 
+         */
+         model: {
+          type: Object,
+          computed: '_getHTML(sm,md,lg,xl)',
+        },
+         model2: {
+          type: Object,
+          value: { 'html': 'HELLO'},
+        },
       },
-
+      /**
+       * Calculate the html to inlcude.
+       */
+      _getHTML: function(sm,md,lg,xl) {
+        return { 'sm': sm+'px', 'md': md+'px', 'lg': lg+'px', 'xl': xl+'px' };
+      },
     });
   </script>
 </dom-module>

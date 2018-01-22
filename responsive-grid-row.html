@@ -49,14 +49,28 @@ A LRN element
 
       properties: {
         /**
-         * TODO: Autoclear when a row is full?
+         * Set gutter
          */
-         autoClear: {
-          type: Boolean,
-          value: false,
+         gutter: {
+          type: Number,
+          value: 15,
+        },
+        /**
+         * Set row margin based on gutter
+         */
+         margin: {
+          type: Number,
+          computed: '_computeMargin(gutter)',
+          reflectToAttribute: true,
         },
       },
-
+      /**
+       * Set margin based on gutter of columns
+       */
+      _computeMargin: function(gutter) { 
+        console.log(0-gutter);
+        return 0-gutter; 
+      }
     });
   </script>
 </dom-module>

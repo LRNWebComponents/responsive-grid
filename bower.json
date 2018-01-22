@@ -3,7 +3,8 @@
   "description": "A LRN element",
   "main": "responsive-grid.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.10.1"
+    "polymer": "Polymer/polymer#^1.10.1",
+    "juicy-html": "Juicy/juicy-html#^3.0.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
