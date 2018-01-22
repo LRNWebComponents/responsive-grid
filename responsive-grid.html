@@ -12,57 +12,19 @@ A LRN element
 
 @microcopy - the mental model for this element
  Example:
-  <responsive-grid>
-    <responsive-grid-row>
-      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-      <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-    </responsive-grid-row>
-  </responsive-grid>
+  <responsive-grid></responsive-grid>
+  <responsive-grid-row>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+  </responsive-grid-row>
 
 -->
 
 <dom-module id="responsive-grid">
   <template>
-    <style>
-      :host {
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-      :host:before,
-      :host:after {
-        content: " ";
-        display: table;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-      :host:after {
-        clear: both;
-      }
-      /* Hide Print-Only on Screen */
-      @media screen {
-        ::slotted(responsive-grid-row[print-only]),
-        ::slotted(* > responsive-grid-col[print-only]) {
-          display: none;
-        }
-      }
-      /* Hide Screen-Only on Print */
-      @media print {
-        ::slotted(* > responsive-grid-col[screen-only]) {
-          display: none;
-        }
-      }
-      </style>
-      <template is="dom-bind">
-        <juicy-html model="{{model}}" html="{{model.html}}"></juicy-html>
-      </template>
-      <slot></slot>
+    <juicy-html model="{{model}}" html="{{model.html}}"></juicy-html>
   </template>
 
   <script>
@@ -74,28 +36,28 @@ A LRN element
         /**
          * Set small breakpoint
          */
-         sm: {
+        sm: {
           type: Number,
           value: 600,
         },
         /**
          * Set medium breakpoint
          */
-         md: {
+        md: {
           type: Number,
           value: 900,
         },
         /**
          * Set small breakpoint
          */
-         lg: {
+        lg: {
           type: Number,
           value: 1200,
         },
         /**
          * Set medium breakpoint
          */
-         xl: {
+        xl: {
           type: Number,
           value: 1800,
         },
@@ -103,7 +65,7 @@ A LRN element
          * Stylesheet based on breakpoints. Breakpoints selected based on: 
          * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 
          */
-         model: {
+        model: {
           type: Object,
           computed: '_getHTML(sm,md,lg,xl)',
         },
@@ -120,7 +82,7 @@ A LRN element
           '@media (min-width: '+xl+'px) {'+this._getHiddenCol('xl','block')+this._getMedia('xl')+'}'
         ];
         console.log('<style>'+html.join('')+'<style>');
-        return {'html': '<style>'+html.join('')+'<style>'};
+        return {html: '<style>'+html.join('')+'<style>'};
       },
       /**
        * Calculate the CSS for a media query.

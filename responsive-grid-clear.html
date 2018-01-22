@@ -9,11 +9,11 @@ A clearumn for the responsive grid
 @microcopy - the mental model for this element
   Example: 
   <responsive-grid-clear 
-    clear-xs      //clears the floated columns on an extra small-width screen
-    clear-sm      //clears the floated columns on a small-width screen
-    clear-md      //clears the floated columns on a medium-width screen
-    clear-lg>     //clears the floated columns on a large-width screen
-</responsive-grid-clear>
+    xs   //clears the floated columns on an extra small-width screen
+    sm   //clears the floated columns on a small-width screen
+    md   //clears the floated columns on a medium-width screen
+    lg>  //clears the floated columns on a large-width screen
+  </responsive-grid-clear>
 -->
 
 <dom-module id="responsive-grid-clear">
@@ -23,41 +23,41 @@ A clearumn for the responsive grid
         display: none;
         clear: both;
       }
-      :host[clear-xs] {
+      :host[xs] {
         display: block;
       }
       /* Breakpoints selected based on: 
        * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 */
        
       @media (min-width: 600px) {
-        :host[clear-xs] {
+        :host[xs] {
           display: none;
         }
-        :host[clear-sm] {
+        :host[sm] {
           display: block;
         }
       }
       @media (min-width: 900px) {
-        :host[clear-sm] {
+        :host[sm] {
           display: none;
         }
-        :host[clear-md] {
+        :host[md] {
           display: block;
         }
       }
       @media (min-width: 1200px) {
-        :host[clear-md] {
+        :host[md] {
           display: none;
         }
-        :host[clear-lg] {
+        :host[lg] {
           display: block;
         }
       }
       @media (min-width: 1800px) {
-        :host[clear-lg] {
+        :host[lg] {
           display: none;
         }
-        :host[clear-xl] {
+        :host[xl] {
           display: block;
         }
       }
@@ -71,30 +71,37 @@ A clearumn for the responsive grid
 
       properties: {
         /** 
+         * clear the float and force a new worw on an extra-large screen?
+         */
+        xl: {
+          type: Boolean,
+          value: false,
+        },
+        /** 
          * clear the float and force a new worw on a large screen?
          */
-        clearLg: {
+        lg: {
           type: Boolean,
           value: false,
         },
         /** 
          * clear the float and force a new worw on a medium screen?
          */
-        clearSm: {
+        md: {
           type: Boolean,
           value: false,
         },
         /** 
          * clear the float and force a new worw on a small screen?
          */
-        clearSm: {
+        sm: {
           type: Boolean,
           value: false,
         },
         /** 
          * clear the float and force a new worw on an extra-small screen?
          */
-        clearXs: {
+        xs: {
           type: Boolean,
           value: false,
         },

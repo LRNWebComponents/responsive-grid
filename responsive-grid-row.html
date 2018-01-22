@@ -9,10 +9,10 @@ A LRN element
 @microcopy - the mental model for this element
  Example:
   <responsive-grid-row>
-    <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-    <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-    <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
-    <responsive-grid-col large="4" desktop="3" tablet="2" mobile="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
   </responsive-grid-row>
 
 -->
@@ -20,25 +20,45 @@ A LRN element
 <dom-module id="responsive-grid-row">
   <template>
     <style>
+      :host {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
       :host:before,
       :host:after {
         content: " ";
         display: table;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
       }
       :host:after {
         clear: both;
       }
-      :host:before,
-      :host:after {
+      :host #row-inner {
+        margin-left: attr(margin)"px";
+        margin-right: attr(margin)"px";
+      }
+      :host #row-inner:before,
+      :host #row-inner:after {
+        content: " ";
+        display: table;
+      }
+      :host #row-inner:after {
+        clear: both;
+      }
+      :host #row-inner:before,
+      :host #row-inner:after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
     </style>
-    <template is="dom-bind">
-      <juicy-html model$="{{model}}" html$="{{model.html}}"></juicy-html>
-    </template>
-    <slot></slot>
+    <div id="row-inner" style$=[[margin]]><slot></slot></div>
   </template>
 
   <script>
@@ -57,23 +77,17 @@ A LRN element
         /**
          * Set row margin based on gutter
          */
-         model: {
+         margin: {
           type: String,
-          computed: '_getStyles(gutter)',
+          computed: '_computeMargin(gutter)',
         },
       },
       /**
        * Set margin based on gutter of columns
        */
-      _getStyles: function(gutter) { 
-        let margin = 0-gutter, css = [
-          ':host { ',
-          'margin-left: '+margin+'px; ',
-          'margin-right: '+margin+'px; ',
-          '}'
-        ].join('');
-        console.log(css);
-        return { 'html': '<style>'+css+'</style>' }; 
+      _computeMargin: function(gutter) { 
+        console.log(0-gutter);
+        return 'margin-left: '+(0-gutter)+'px; margin-right: '+(0-gutter)+'px;'; 
       }
     });
   </script>
