@@ -59,9 +59,8 @@ A LRN element
         }
       }
       </style>
-      <!--juicy-html model="{{model}}" html="<h1>body { font-size: [[model.sm]]px !important; }</h1>"></juicy-html-->
       <template is="dom-bind">
-        <juicy-html model="{{model}}" href="breakpoints.html"></juicy-html>
+        <juicy-html model="{{model}}" html="{{model.html}}"></juicy-html>
       </template>
       <slot></slot>
   </template>
@@ -101,24 +100,55 @@ A LRN element
           value: 1800,
         },
         /**
-         * Collection of breakpoints, 
-         * where defaults are based on: 
+         * Stylesheet based on breakpoints. Breakpoints selected based on: 
          * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 
          */
          model: {
           type: Object,
           computed: '_getHTML(sm,md,lg,xl)',
         },
-         model2: {
-          type: Object,
-          value: { 'html': 'HELLO'},
-        },
       },
       /**
        * Calculate the html to inlcude.
        */
       _getHTML: function(sm,md,lg,xl) {
-        return { 'sm': sm+'px', 'md': md+'px', 'lg': lg+'px', 'xl': xl+'px' };
+        let html = [
+          this._getMedia('xs','block'),
+          '@media (min-width: '+sm+'px) {'+this._getHiddenCol('xs','block')+this._getMedia('sm')+'}',
+          '@media (min-width: '+md+'px) {'+this._getHiddenCol('md','block')+this._getMedia('md')+'}',
+          '@media (min-width: '+lg+'px) {'+this._getHiddenCol('lg','block')+this._getMedia('lg')+'}',
+          '@media (min-width: '+xl+'px) {'+this._getHiddenCol('xl','block')+this._getMedia('xl')+'}'
+        ];
+        console.log('<style>'+html.join('')+'<style>');
+        return {'html': '<style>'+html.join('')+'<style>'};
+      },
+      /**
+       * Calculate the CSS for a media query.
+       */
+      _getMedia: function(size) {
+        let css = '', cols = [
+          [12,100],[11,91.66666667],[10,83.33333333],
+          [9,75],[8,66.66666667],[7,58.33333333],
+          [6,50],[5,41.66666667],[4,33.33333333],
+          [3,25],[2,16.66666667],[1,8.33333333]
+        ];
+        for (i in cols) {
+          css+= this._getCSS(size,cols[i][0],cols[i][1]);
+        }
+        css+= this._getHiddenCol(size,'none');
+        return css;
+      },
+      /**
+       * Calculate the CSS for a single column at a breakpoint.
+       */
+      _getCSS: function(size,width,pct) {
+        return 'responsive-grid-col['+size+'-width="'+width+'"] { width: '+pct+'%; }';
+      },
+      /**
+       * Show or hide a column with width 0.
+       */
+      _getHiddenCol: function(size,display) {
+        return 'responsive-grid-col['+size+'-width="0"] { display: '+display+'; }';
       },
     });
   </script>

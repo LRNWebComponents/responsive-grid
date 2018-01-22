@@ -20,10 +20,6 @@ A LRN element
 <dom-module id="responsive-grid-row">
   <template>
     <style>
-      :host {
-        margin-left: -15px;
-        margin-right: -15px;
-      }
       :host:before,
       :host:after {
         content: " ";
@@ -39,6 +35,9 @@ A LRN element
         box-sizing: border-box;
       }
     </style>
+    <template is="dom-bind">
+      <juicy-html model$="{{model}}" html$="{{model.html}}"></juicy-html>
+    </template>
     <slot></slot>
   </template>
 
@@ -58,18 +57,23 @@ A LRN element
         /**
          * Set row margin based on gutter
          */
-         margin: {
-          type: Number,
-          computed: '_computeMargin(gutter)',
-          reflectToAttribute: true,
+         model: {
+          type: String,
+          computed: '_getStyles(gutter)',
         },
       },
       /**
        * Set margin based on gutter of columns
        */
-      _computeMargin: function(gutter) { 
-        console.log(0-gutter);
-        return 0-gutter; 
+      _getStyles: function(gutter) { 
+        let margin = 0-gutter, css = [
+          ':host { ',
+          'margin-left: '+margin+'px; ',
+          'margin-right: '+margin+'px; ',
+          '}'
+        ].join('');
+        console.log(css);
+        return { 'html': '<style>'+css+'</style>' }; 
       }
     });
   </script>
