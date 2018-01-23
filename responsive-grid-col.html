@@ -27,6 +27,229 @@ A column for the responsive grid
         min-height: 1px;
         float: left;
       }
+      :host #col-inner {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      :host[xs="12"] {
+        width: 100%;
+      }
+      :host[xs="11"] {
+        width: 91.66666667%;
+      }
+      :host[xs="10"] {
+        width: 83.33333333%;
+      }
+      :host[xs="9"] {
+        width: 75%;
+      }
+      :host[xs="8"] {
+        width: 66.66666667%;
+      }
+      :host[xs="7"] {
+        width: 58.33333333%;
+      }
+      :host[xs="6"] {
+        width: 50%;
+      }
+      :host[xs="5"] {
+        width: 41.66666667%;
+      }
+      :host[xs="4"] {
+        width: 33.33333333%;
+      }
+      :host[xs="3"] {
+        width: 25%;
+      }
+      :host[xs="2"] {
+        width: 16.66666667%;
+      }
+      :host[xs="1"] {
+        width: 8.33333333%;
+      }
+      :host[xs="0"] {
+        display: none;
+      }
+      /* Small (sm) Screen */
+      @media (min-width: 600px) {
+        :host[xs="0"] {
+          display: block;
+        }
+        :host[sm="12"] {
+          width: 100%;
+        }
+        :host[sm="11"] {
+          width: 91.66666667%;
+        }
+        :host[sm="10"] {
+          width: 83.33333333%;
+        }
+        :host[sm="9"] {
+          width: 75%;
+        }
+        :host[sm="8"] {
+          width: 66.66666667%;
+        }
+        :host[sm="7"] {
+          width: 58.33333333%;
+        }
+        :host[sm="6"] {
+          width: 50%;
+        }
+        :host[sm="5"] {
+          width: 41.66666667%;
+        }
+        :host[sm="4"] {
+          width: 33.33333333%;
+        }
+        :host[sm="3"] {
+          width: 25%;
+        }
+        :host[sm="2"] {
+          width: 16.66666667%;
+        }
+        :host[sm="1"] {
+          width: 8.33333333%;
+        }
+        :host[sm="0"] {
+          display: none;
+        }
+      }
+      /* Medium (md) Screen */
+      @media (min-width: 900px) {
+        :host[xs="0"] {
+          display: block;
+        }
+        :host[md="12"] {
+          width: 100%;
+        }
+        :host[md="11"] {
+          width: 91.66666667%;
+        }
+        :host[md="10"] {
+          width: 83.33333333%;
+        }
+        :host[md="9"] {
+          width: 75%;
+        }
+        :host[md="8"] {
+          width: 66.66666667%;
+        }
+        :host[md="7"] {
+          width: 58.33333333%;
+        }
+        :host[md="6"] {
+          width: 50%;
+        }
+        :host[md="5"] {
+          width: 41.66666667%;
+        }
+        :host[md="4"] {
+          width: 33.33333333%;
+        }
+        :host[md="3"] {
+          width: 25%;
+        }
+        :host[md="2"] {
+          width: 16.66666667%;
+        }
+        :host[md="1"] {
+          width: 8.33333333%;
+        }
+        :host[md="0"] {
+          display: none;
+        }
+      }
+      /* Large (lg) Screen */
+      @media (min-width: 1200px) {
+        :host[md="0"] {
+          display: block;
+        }
+        :host[lg="12"] {
+          width: 100%;
+        }
+        :host[lg="11"] {
+          width: 91.66666667%;
+        }
+        :host[lg="10"] {
+          width: 83.33333333%;
+        }
+        :host[lg="9"] {
+          width: 75%;
+        }
+        :host[lg="8"] {
+          width: 66.66666667%;
+        }
+        :host[lg="7"] {
+          width: 58.33333333%;
+        }
+        :host[lg="6"] {
+          width: 50%;
+        }
+        :host[lg="5"] {
+          width: 41.66666667%;
+        }
+        :host[lg="4"] {
+          width: 33.33333333%;
+        }
+        :host[lg="3"] {
+          width: 25%;
+        }
+        :host[lg="2"] {
+          width: 16.66666667%;
+        }
+        :host[lg="1"] {
+          width: 8.33333333%;
+        }
+        :host[lg="0"] {
+          display: none;
+        }
+      }
+      /* Extra Large (xl) Screen */
+      @media (min-width: 1800px) {
+        :host[lg="0"] {
+          display: block;
+        }
+        :host[xl="12"] {
+          width: 100%;
+        }
+        :host[xl="11"] {
+          width: 91.66666667%;
+        }
+        :host[xl="10"] {
+          width: 83.33333333%;
+        }
+        :host[xl="9"] {
+          width: 75%;
+        }
+        :host[xl="8"] {
+          width: 66.66666667%;
+        }
+        :host[xl="7"] {
+          width: 58.33333333%;
+        }
+        :host[xl="6"] {
+          width: 50%;
+        }
+        :host[xl="5"] {
+          width: 41.66666667%;
+        }
+        :host[xl="4"] {
+          width: 33.33333333%;
+        }
+        :host[xl="3"] {
+          width: 25%;
+        }
+        :host[xl="2"] {
+          width: 16.66666667%;
+        }
+        :host[xl="1"] {
+          width: 8.33333333%;
+        }
+        :host[xl="0"] {
+          display: none;
+        }
+      }
       /* Hide Print-Only on Screen */
       @media screen {
         :host[print-only] {
@@ -40,6 +263,12 @@ A column for the responsive grid
         }
       }
     </style>
+    <juicy-html html="The HTML attribute works!"></juicy-html>
+    <juicy-html model="{{model}}" html="Does {{model.css}} work?"></juicy-html>
+    <!--dom-bind><template is="dom-bind"><juicy-html model="{{model}}" href="test4.html"></juicy-html></template></dom-bind-->
+    <dom-bind><template is="dom-bind"><juicy-html model="{{model}}" html="{{model.css}}"></juicy-html></template></dom-bind>
+    <!--dom-bind><template is="dom-bind"><juicy-html href="test3.html"></juicy-html></template></dom-bind-->
+    <!--dom-bind><template is="dom-bind"><juicy-html model="{{model}}" href="test4.html"></juicy-html></template></dom-bind-->
     <div id="col-inner"><slot></slot></div>
   </template>
 
@@ -52,37 +281,49 @@ A column for the responsive grid
         /** 
          * the width when viewed on an extra large screen
          */
-        xl: {
+        xlWidth: {
           type: Number,
           value: 1,
         },
         /** 
          * the width when viewed on a large screen
          */
-        lg: {
+        lgWidth: {
           type: Number,
           value: 1,
         },
         /** 
          * the width when viewed on a medium screen
          */
-        md: {
+        mdWidth: {
           type: Number,
           value: 1,
         },
         /** 
          * the width when viewed on a small screen
          */
-        sm: {
+        smWidth: {
           type: Number,
           value: 1,
         },
         /** 
          * the width when viewed on an extra-small screen
          */
-        xs: {
+        xsWidth: {
           type: Number,
           value: 1,
+        },
+        /** 
+         * TESTING
+         */
+        model: {
+          type: Object,
+          value: {
+            attribute: "model", 
+            bg1: "#e9dbbb", 
+            bg2: "#e5f9fc",
+            css: "<style>responsive-grid-col { background-color: #e9dbbb !important;}:host {background-color: #e5f9fc !important;}</style>"
+          },
         },
       },
 

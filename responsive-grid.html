@@ -12,19 +12,43 @@ A LRN element
 
 @microcopy - the mental model for this element
  Example:
-  <responsive-grid></responsive-grid>
-  <responsive-grid-row>
-    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
-    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
-    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
-    <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
-  </responsive-grid-row>
+  <responsive-grid>
+    <responsive-grid-row>
+      <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+      <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+      <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+      <responsive-grid-col xl="6" lg="4" md="3" sm="2" xs="1">Content</responsive-grid-col>
+    </responsive-grid-row>
+  </responsive-grid>
 
 -->
 
 <dom-module id="responsive-grid">
   <template>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host:before,
+      :host:after {
+        content: " ";
+        display: table;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host:after {
+        clear: both;
+      }
+    </style>
     <juicy-html model="{{model}}" html="{{model.html}}"></juicy-html>
+    <slot></slot>
   </template>
 
   <script>
@@ -77,11 +101,10 @@ A LRN element
         let html = [
           this._getMedia('xs','block'),
           '@media (min-width: '+sm+'px) {'+this._getHiddenCol('xs','block')+this._getMedia('sm')+'}',
-          '@media (min-width: '+md+'px) {'+this._getHiddenCol('md','block')+this._getMedia('md')+'}',
-          '@media (min-width: '+lg+'px) {'+this._getHiddenCol('lg','block')+this._getMedia('lg')+'}',
-          '@media (min-width: '+xl+'px) {'+this._getHiddenCol('xl','block')+this._getMedia('xl')+'}'
+          '@media (min-width: '+md+'px) {'+this._getHiddenCol('sm','block')+this._getMedia('md')+'}',
+          '@media (min-width: '+lg+'px) {'+this._getHiddenCol('md','block')+this._getMedia('lg')+'}',
+          '@media (min-width: '+xl+'px) {'+this._getHiddenCol('lg','block')+this._getMedia('xl')+'}'
         ];
-        console.log('<style>'+html.join('')+'<style>');
         return {html: '<style>'+html.join('')+'<style>'};
       },
       /**
@@ -104,13 +127,13 @@ A LRN element
        * Calculate the CSS for a single column at a breakpoint.
        */
       _getCSS: function(size,width,pct) {
-        return 'responsive-grid-col['+size+'-width="'+width+'"] { width: '+pct+'%; }';
+        return 'responsive-grid-col['+size+'="'+width+'"] { width: '+pct+'%; }';
       },
       /**
        * Show or hide a column with width 0.
        */
       _getHiddenCol: function(size,display) {
-        return 'responsive-grid-col['+size+'-width="0"] { display: '+display+'; }';
+        return 'responsive-grid-col['+size+'="0"] { display: '+display+'; }';
       },
     });
   </script>
