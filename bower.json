@@ -4,7 +4,6 @@
   "main": "responsive-grid.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.10.1",
-    "juicy-html": "Juicy/juicy-html#^3.0.0",
     "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^2.0.1"
   },
   "devDependencies": {
