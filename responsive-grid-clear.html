@@ -23,44 +23,6 @@ A clearumn for the responsive grid
         display: none;
         clear: both;
       }
-      :host[xs] {
-        display: block;
-      }
-      /* Breakpoints selected based on: 
-       * https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 */
-       
-      @media (min-width: 600px) {
-        :host[xs] {
-          display: none;
-        }
-        :host[sm] {
-          display: block;
-        }
-      }
-      @media (min-width: 900px) {
-        :host[sm] {
-          display: none;
-        }
-        :host[md] {
-          display: block;
-        }
-      }
-      @media (min-width: 1200px) {
-        :host[md] {
-          display: none;
-        }
-        :host[lg] {
-          display: block;
-        }
-      }
-      @media (min-width: 1800px) {
-        :host[lg] {
-          display: none;
-        }
-        :host[xl] {
-          display: block;
-        }
-      }
     </style>
   </template>
 
