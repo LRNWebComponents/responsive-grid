@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="responsive-utility.html">
 <link rel="import" href="responsive-grid-col.html">
 <link rel="import" href="responsive-grid-clear.html">
-<link rel="import" href="responsive-breakpoints.html">
 
 <!--
 `responsive-grid-row`
@@ -11,11 +11,17 @@ A LRN element
 
 @microcopy - the mental model for this element
  Example:
-  <responsive-grid-row>
-    <* large="4" desktop="3" tablet="2" mobile="1">Content</*>
-    <* large="4" desktop="3" tablet="2" mobile="1">Content</*>
-    <* large="4" desktop="3" tablet="2" mobile="1">Content</*>
-    <* large="4" desktop="3" tablet="2" mobile="1">Content</*>
+  <responsive-grid-row 
+    sm="600"                      //custom breakpoint for small screens
+    md="900"                      //custom breakpoint for medium screens
+    sm="1200"                     //custom breakpoint for large screens
+    md="1800"                     //custom breakpoint for extra-large screens
+    responsive-to-parent="true">  //make responsive to parent container instead of window/screen
+    <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">Content</responsive-grid-col>
+    <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">Content</responsive-grid-col>
+    <responsive-grid-clear sm/>
+    <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">Content</responsive-grid-col>
+    <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">Content</responsive-grid-col>
   </responsive-grid-row>
 
 -->
@@ -163,7 +169,13 @@ A LRN element
         display: none;
       }
     </style>
-    <responsive-breakpoints></responsive-breakpoints>
+    <responsive-utility 
+      sm$=[[sm]] 
+      md$=[[sm]] 
+      lg$=[[lg]] 
+      xl$=[[xl]] 
+      responsive-to-parent$=[[responsiveToParent]]>
+    </responsive-utility>
     <div id="row-inner" screen$="[[screen]]"><slot></slot></div>
   </template>
 
@@ -177,6 +189,41 @@ A LRN element
       },
 
       properties: {
+        /**
+         * Custom small breakpoint
+         */
+        sm: {
+          type: Number,
+          value: null,
+        },
+        /**
+         * Custom medium breakpoint
+         */
+        md: {
+          type: Number,
+          value: null,
+        },
+        /**
+         * Custom large breakpoint
+         */
+        lg: {
+          type: Number,
+          value: null,
+        },
+        /**
+         * Custom extra-large breakpoint
+         */
+        lg: {
+          type: Number,
+          value: null,
+        },
+        /**
+         * make responsive based on a container instead of the window
+         */
+        responsiveToParent: {
+          type: Boolean,
+          value: false,
+        },
         /*
          * screen size: xs, sm, md, lg, or xl
          */
@@ -185,10 +232,9 @@ A LRN element
           value: 'xs',
           notify: true,
           reflectToAttribute: true,
-        }
+        },
       },
       _onScreenResize: function(e){
-        console.log(e.detail.screen);
         this.screen = e.detail.screen;
       }
     });

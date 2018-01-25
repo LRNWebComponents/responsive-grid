@@ -10,7 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../responsive-grid.html">
+    <link rel="import" href="../responsive-grid-row.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
         .vertical-section-container.centered {
@@ -27,6 +27,7 @@
     </style>
   </head>
   <body>
+    <small><a href="performancetest.html">Performance Test</a></small>
     <div class="vertical-section-container centered">
       <h3>Basic responsive-grid demo</h3>
       <h4>Simple Responsive Grid</h4>
@@ -160,6 +161,50 @@
               <div class="column-demo">
                   Visible on an extra large screen.
               </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+        </template>
+      </demo-snippet>
+      <h4>Responsive to parent container</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid-row responsive-to-parent="true" style="max-width: 800px; border: 1px solid black; padding: 5px;">
+            <responsive-grid-col xl="0" lg="0" md="0" sm="0" xs="12">
+              Visible in an extra-small parent (&lt; 600px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="0" sm="12" xs="0">
+              Visible in a small parent (&gt; 600px and &lt; 900px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="12" sm="0" xs="0">
+              Visible on a medium screen (&gt; 900px and &lt; 1200px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="12" md="0" sm="0" xs="0">
+              Visible on a large screen (&gt; 1200px and &lt; 1800px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="12" lg="0" md="0" sm="0" xs="0">
+              Visible on an extra-large screen (&gt;= 1800px).
+            </responsive-grid-col>
+          </responsive-grid-row>
+        </template>
+      </demo-snippet>
+      <h4>Custom breakpoints</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid-row sm="1000" md="1500" lg="2000" xl="2500">
+            <responsive-grid-col xl="0" lg="0" md="0" sm="0" xs="12">
+              Visible on an extra-small screen  (&lt; 1500px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="0" sm="12" xs="0">
+              Visible on a small screen (&gt; 1500px and &lt; 2000px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="12" sm="0" xs="0">
+              Visible on a medium screen (&gt; 1500px and &lt; 2000px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="12" md="0" sm="0" xs="0">
+              Visible on a large screen (&gt; 2000px and &lt; 2500px).
+            </responsive-grid-col>
+            <responsive-grid-col xl="12" lg="0" md="0" sm="0" xs="0">
+              Visible on an extra-large screen (&gt;= 2500px).
             </responsive-grid-col>
           </responsive-grid-row>
         </template>
