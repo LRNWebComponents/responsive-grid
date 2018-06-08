@@ -46,9 +46,10 @@ A LRN element
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
-      :host #row-inner {
+      #row-inner {
         margin-left: -15px;
         margin-right: -15px;
+        @apply --responsive-grid-row-inner;
       }
       :host #row-inner:before,
       :host #row-inner:after {
